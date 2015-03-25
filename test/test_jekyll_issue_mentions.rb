@@ -1,5 +1,4 @@
 require 'helper'
-require 'byebug'
 
 class TestJekyllIssueMentions < Minitest::Test
   include IssueMentionsTestHelpers
