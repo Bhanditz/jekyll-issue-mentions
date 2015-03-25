@@ -4,13 +4,13 @@ require 'shoulda'
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'jekyll-mentions'
+require 'jekyll-issue-mentions'
 
 TEST_DIR     = File.expand_path("../", __FILE__)
 FIXTURES_DIR = File.expand_path("fixtures", TEST_DIR)
 DEST_DIR     = File.expand_path("destination", TEST_DIR)
 
-module MentionsTestHelpers
+module IssueMentionsTestHelpers
   def fixture_site
     Jekyll::Site.new(
       Jekyll::Utils.deep_merge_hashes(
@@ -20,6 +20,9 @@ module MentionsTestHelpers
           "destination" => DEST_DIR,
           "collections" => {
             "docs"  => {}
+          },
+          "jekyll-issue-mentions" => {
+            "base_url" => "https://github.com/usr1/repo1/issues"
           }
         }
       )

@@ -2,4 +2,4 @@
 title: don't mangle that liquid plz
 ---
 
-test @test test<a href="{{ test }}">test</a>
+1234 #1234 1234<a href="{{ foo }}">1234</a>

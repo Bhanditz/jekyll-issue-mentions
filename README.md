@@ -1,48 +1,42 @@
-# Jekyll Mentions
+# Jekyll Issue Mentions
 
-@mentionable support for your Jekyll site
+#issueid support for your Jekyll site
 
-[![Gem Version](https://badge.fury.io/rb/jekyll-mentions.png)](http://badge.fury.io/rb/jekyll-mentions)
-[![Build Status](https://travis-ci.org/jekyll/jekyll-mentions.svg?branch=master)](https://travis-ci.org/jekyll/jekyll-mentions)
+[![Gem Version](https://badge.fury.io/rb/jekyll-issue-mentions.png)](http://badge.fury.io/rb/jekyll-mentions)
+[![Build Status](https://travis-ci.org/workato/jekyll-issue-mentions.svg?branch=master)](https://travis-ci.org/workato/jekyll-issue-mentions)
 
 ## Usage
 
 Add the following to your site's `Gemfile`
 
 ```
-gem 'jekyll-mentions'
+gem 'jekyll-issue-mentions'
 ```
 
 And add the following to your site's `_config.yml`
 
 ```yml
 gems:
-  - jekyll-mentions
+  - jekyll-issue-mentions
 ```
 
-In any page or post, use @mentions as you would normally, e.g.
+In any page or post, use #issueid as you would normally, e.g.
 
 ```markdown
-Hey @benbalter, what do you think of this?
+Hey what do you think of this issue #1234?
 ```
-
-**Note**: Jekyll Mentions simply turns the @mentions into links, it does not notify the mentioned user.
 
 ## Configuration
 
-Have your own social network? No problem. We allow you to configure the base URL of all the mentions.
-
-To change it, add the following to your Jekyll configuration:
+Set the Github repo issue url:
 
 ```yaml
-jekyll-mentions:
-  base_url: https://twitter.com
+jekyll-issue-mentions:
+  base_url: https://github.com/workato/jekyll-issue-mentions/issues
 ```
 
-If you're lazy like me, you can use this shorthand:
+Or, you can use this shorthand:
 
 ```yaml
-jekyll-mentions: https://twitter.com
+jekyll-issue-mentions: https://github.com/workato/jekyll-issue-mentions/issues
 ```
-
-Et voilà! Your mentions will now use that base URL instead of the default of `https://github.com`.
