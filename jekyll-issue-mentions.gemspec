@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
   s.name        = "jekyll-issue-mentions"
   s.summary     = "#issueid support for your Jekyll site"
-  s.version     = "0.2.1"
+  s.version     = "0.1.1"
   s.authors     = ["Harish Shetty"]
   s.email       = "support@workato.com"
 
   s.homepage    = "https://github.com/workato/jekyll-issue-mentions"
   s.licenses    = ["MIT"]
-  s.files       = ["lib/jekyll-issue-mentions.rb", "lib/issue_mentions_filter.rb" ]
+  s.files       = ["lib/jekyll-issue-mentions.rb", "lib/issue_mention_filter.rb" ]
 
   s.add_dependency "jekyll", '~> 2.0'
   s.add_dependency "html-pipeline", '~> 1.9.0'

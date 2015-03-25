@@ -1,6 +1,6 @@
 # Jekyll Issue Mentions
 
-#issueid support for your Jekyll site
+Github #issueid mention support for your Jekyll site
 
 [![Gem Version](https://badge.fury.io/rb/jekyll-issue-mentions.png)](http://badge.fury.io/rb/jekyll-mentions)
 [![Build Status](https://travis-ci.org/workato/jekyll-issue-mentions.svg?branch=master)](https://travis-ci.org/workato/jekyll-issue-mentions)
