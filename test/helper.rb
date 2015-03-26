@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'minitest/autorun'
 require 'shoulda'
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
