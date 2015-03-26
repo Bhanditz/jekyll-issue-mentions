@@ -2,7 +2,7 @@
 
 Github #issueid mention support for your Jekyll site
 
-[![Gem Version](https://badge.fury.io/rb/jekyll-issue-mentions.png)](http://badge.fury.io/rb/jekyll-mentions)
+[![Gem Version](https://badge.fury.io/rb/jekyll-issue-mentions.png)](http://badge.fury.io/rb/jekyll-issue-mentions)
 [![Build Status](https://travis-ci.org/workato/jekyll-issue-mentions.svg?branch=master)](https://travis-ci.org/workato/jekyll-issue-mentions)
 
 ## Usage
@@ -23,12 +23,12 @@ gems:
 In any page or post, use #issueid as you would normally, e.g.
 
 ```markdown
-Can you fix #1 today?
+Can you look at issue #1 today?
 ```
+
 Will be converted to 
 
-```markdown
-Can you fix [#1](https://github.com/workato/jekyll-issue-mentions/issues/1) today?
+> Can you look at issue [#1](https://github.com/workato/jekyll-issue-mentions/issues/1) today?
 
 ## Configuration
 
