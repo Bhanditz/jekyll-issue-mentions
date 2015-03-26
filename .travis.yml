@@ -22,4 +22,4 @@ env:
     #on_failure: never
 addons:
   code_climate:
-    repo_token: adf08323
+    repo_token: adf08323...
