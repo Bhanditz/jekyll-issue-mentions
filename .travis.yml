@@ -20,6 +20,3 @@ env:
   #email:
     #on_success: never
     #on_failure: never
-addons:
-  code_climate:
-    repo_token: adf08323...
