@@ -23,8 +23,12 @@ gems:
 In any page or post, use #issueid as you would normally, e.g.
 
 ```markdown
-Hey what do you think of this issue #1234?
+Can you fix #1 today?
 ```
+Will be converted to 
+
+```markdown
+Can you fix [#1](https://github.com/workato/jekyll-issue-mentions/issues/1) today?
 
 ## Configuration
 
