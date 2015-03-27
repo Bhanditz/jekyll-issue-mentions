@@ -30,25 +30,19 @@ module Jekyll
   private
     def validate_config!(configs)
       configs = configs['jekyll-issue-mentions']
-      @plugin_options ||= begin
-        case configs
-        when nil, NilClass
-          raise ArgumentError.new("Your jekyll-issue-mentions config has to configured.")
-        when String
-          if configs.strip.empty?
-            raise ArgumentError.new("Your jekyll-issue-mentions config is configured with empty string")
-          else
-            @base_url = configs
-          end
-        when Hash
-          @base_url, @issueid_pattern = configs['base_url'], configs['issueid_pattern']
-          if @base_url.nil? || @base_url.empty?
-            raise ArgumentError.new("Your jekyll-issue-mentions is missing base_url configuration.")
-          end
-        else
-          raise ArgumentError.new("Your jekyll-issue-mentions config has to either be a string or a hash! It's a #{configs.class} right now.")
-        end
+      base_url = issueid_pattern = nil
+      case configs
+      when String
+        base_url = configs
+      when Hash
+        base_url, issueid_pattern = configs['base_url'], configs['issueid_pattern']
+        issueid_pattern = /#{issueid_pattern}/ if issueid_pattern.is_a?(String)
       end
+      error_prefix = "jekyll-issue-mentions"
+      raise ArgumentError.new("#{error_prefix}.base_url is missing/empty") if (base_url.nil? || base_url.empty?)
+      raise ArgumentError.new("#{error_prefix}.issueid_pattern is invalid") if (!issueid_pattern.nil? && !issueid_pattern.is_a?(Regexp))
+
+      @base_url, @issueid_pattern = base_url, issueid_pattern
     end
   end
 end
