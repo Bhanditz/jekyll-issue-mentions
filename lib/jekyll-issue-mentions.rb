@@ -5,9 +5,11 @@ require 'issue_mention_filter'
 module Jekyll
   class IssueMentions < Jekyll::Generator
     safe true
+    attr_reader :base_url, :issueid_pattern
 
     def initialize(config = Hash.new)
-      @filter = HTML::Pipeline::IssueMentionFilter.new(nil, {:base_url => base_url(config['jekyll-issue-mentions']) })
+      validate_config!(config)
+      @filter = HTML::Pipeline::IssueMentionFilter.new(nil, base_url: base_url, issueid_pattern: issueid_pattern)
     end
 
     def generate(site)
@@ -25,21 +27,27 @@ module Jekyll
       page.html? || page.url.end_with?('/')
     end
 
-    def base_url(configs)
-      case configs
-      when nil, NilClass
-        raise ArgumentError.new("Your jekyll-issue-mentions config has to configured.")
-      when String
-        configs.to_s
-      when Hash
-        base_url = configs['base_url']
-        if base_url.nil?
-          raise ArgumentError.new("Your jekyll-issue-mentions is missing base_url configuration.")
+  private
+    def validate_config!(configs)
+      configs = configs['jekyll-issue-mentions']
+      @plugin_options ||= begin
+        case configs
+        when nil, NilClass
+          raise ArgumentError.new("Your jekyll-issue-mentions config has to configured.")
+        when String
+          if configs.strip.empty?
+            raise ArgumentError.new("Your jekyll-issue-mentions config is configured with empty string")
+          else
+            @base_url = configs
+          end
+        when Hash
+          @base_url, @issueid_pattern = configs['base_url'], configs['issueid_pattern']
+          if @base_url.nil? || @base_url.empty?
+            raise ArgumentError.new("Your jekyll-issue-mentions is missing base_url configuration.")
+          end
         else
-          base_url
+          raise ArgumentError.new("Your jekyll-issue-mentions config has to either be a string or a hash! It's a #{configs.class} right now.")
         end
-      else
-        raise ArgumentError.new("Your jekyll-issue-mentions config has to either be a string or a hash! It's a #{configs.class} right now.")
       end
     end
   end

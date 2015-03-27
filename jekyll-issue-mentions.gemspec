@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = "jekyll-issue-mentions"
   s.summary     = "#issueid support for your Jekyll site"
-  s.version     = "0.1.2"
+  s.version     = "0.1.3"
   s.authors     = ["Harish Shetty"]
   s.email       = "support@workato.com"
 
