@@ -44,3 +44,11 @@ Or, you can use this shorthand:
 ```yaml
 jekyll-issue-mentions: https://github.com/workato/jekyll-issue-mentions/issues
 ```
+
+Set the issue id pattern:
+
+```yaml
+jekyll-issue-mentions:
+  base_url: https://github.com/workato/jekyll-issue-mentions/issues
+  issueid_pattern: '[0-9]{2,}'
+```
