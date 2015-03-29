@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = "jekyll-issue-mentions"
   s.summary     = "#issueid support for your Jekyll site"
-  s.version     = "0.1.4"
+  s.version     = "0.1.5"
   s.authors     = ["Harish Shetty"]
   s.email       = "support@workato.com"
 
@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "jekyll", '~> 2.0'
   s.add_dependency "html-pipeline", '~> 1.9.0'
+  s.add_dependency "nokogiri", [">= 1.4", "<= 1.6.5"]
 
   s.add_development_dependency  'rake'
   s.add_development_dependency  'rdoc'
