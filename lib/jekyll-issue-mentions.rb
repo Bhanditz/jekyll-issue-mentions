@@ -20,7 +20,12 @@ module Jekyll
     def mentionify(page)
       return unless page.content.include?('#')
       filter = HTML::Pipeline::IssueMentionFilter.new(page.content, base_url: base_url, issueid_pattern: issueid_pattern)
-      page.content = filter.call.to_s
+      page.content = filter.call.to_s.
+        gsub("&gt;", ">").
+        gsub("&lt;", "<").
+        gsub("%7B", "{").
+        gsub("%20", " ").
+        gsub("%7D", "}")
     end
 
     def html_page?(page)
