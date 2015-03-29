@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.add_dependency "jekyll", '~> 2.0'
   s.add_dependency "html-pipeline", '~> 1.9.0'
   s.add_dependency "nokogiri", [">= 1.4", "<= 1.6.5"]
+  s.add_dependency "github-markdown"
 
   s.add_development_dependency  'rake'
   s.add_development_dependency  'rdoc'
