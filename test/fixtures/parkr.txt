@@ -3,4 +3,4 @@ title: Parker Moore
 type: author-info
 ---
 
-Parker "#1234" Moore
+Parker '#1234' Moore

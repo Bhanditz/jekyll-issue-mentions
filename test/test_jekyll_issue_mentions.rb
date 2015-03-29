@@ -12,7 +12,14 @@ class TestJekyllIssueMentions < Minitest::Test
   end
 
   def content page
-    page.content.gsub(/\n\z/, '')
+    # counter UTF-8 encoding https://groups.google.com/forum/#!msg/nokogiri-talk/Q2Nh1cLeQzk/dNyAwQ3vgQsJ
+    page.content.
+      gsub(/\n\z/, '').
+      gsub('"', "'").
+      gsub("&gt;", ">").
+      gsub("%7B", "{").
+      gsub("%20", " ").
+      gsub("%7D", "}")
   end
 
   def base_url(configs)
@@ -46,7 +53,7 @@ class TestJekyllIssueMentions < Minitest::Test
     page = page_with_name(@site, "leave-liquid-alone.md")
 
     @mentions.mentionify page
-    assert_equal "#{@mention}<a href=\"{{ foo }}\">1234</a>", content(page)
+    assert_equal "#{@mention}<a href='{{ foo }}'>1234</a>", content(page)
   end
 
   should "not mangle markdown" do
@@ -72,7 +79,7 @@ class TestJekyllIssueMentions < Minitest::Test
     page = page_with_name(@site, "parkr.txt")
 
     @mentions.mentionify page
-    assert_equal "Parker \"<a href='https://github.com/usr1/repo1/issues/1234' class='issue-mention'>#1234</a>\" Moore", content(page)
+    assert_equal "Parker '<a href='https://github.com/usr1/repo1/issues/1234' class='issue-mention'>#1234</a>' Moore", content(page)
   end
 
 

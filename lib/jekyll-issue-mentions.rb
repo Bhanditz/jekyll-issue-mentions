@@ -9,7 +9,6 @@ module Jekyll
 
     def initialize(config = Hash.new)
       validate_config!(config)
-      @filter = HTML::Pipeline::IssueMentionFilter.new(nil, base_url: base_url, issueid_pattern: issueid_pattern)
     end
 
     def generate(site)
@@ -20,7 +19,8 @@ module Jekyll
 
     def mentionify(page)
       return unless page.content.include?('#')
-      page.content = @filter.mention_link_filter(page.content, @filter.base_url, @filter.issueid_pattern)
+      filter = HTML::Pipeline::IssueMentionFilter.new(page.content, base_url: base_url, issueid_pattern: issueid_pattern)
+      page.content = filter.call.to_s
     end
 
     def html_page?(page)
